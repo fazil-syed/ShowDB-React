@@ -6,7 +6,12 @@ export const Feed = (props) => {
   return (
     <div className="flex flex-wrap gap-20 mt-5 ml-14">
       {data !== null &&
-        data.map((item) => <ImageCard key={item.id} item={item} />)}
+        data.map((item) => (
+          <ImageCard
+            key={item !== null && item.id}
+            item={item !== null && item}
+          />
+        ))}
     </div>
   );
 };

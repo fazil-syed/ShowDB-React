@@ -1,7 +1,7 @@
 import React from "react";
 
 export const ImageCard = (props) => {
-  const { item, type } = props;
+  const { item } = props;
   const baseUrl = "http://image.tmdb.org/t/p/w500";
   const imageUrl = `${baseUrl}${item.poster_path}`;
   return (

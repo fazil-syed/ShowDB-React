@@ -17,11 +17,13 @@ function App() {
     switch (currentPage) {
       case "Home":
         fetch("discover/movie").then((res) => {
+          console.log(res);
           setData(res);
         });
-        // fetch("discover/tv").then((res) => {
-        //   setData(res.concat(data));
-        // });
+        fetch("discover/tv").then((res) => {
+          console.log(res);
+          setData(res.concat(data));
+        });
         break;
       case "Trending Shows":
         fetch("trending/tv/day").then((data) => {
