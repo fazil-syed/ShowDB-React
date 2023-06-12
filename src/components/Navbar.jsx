@@ -40,9 +40,9 @@ export const Navbar = (props) => {
         </li>
         <li className="nav-item">
           <Link
-            to="/trending-movie"
+            to="/popular-movie"
             className="text-white"
-            onClick={() => setCurrentPage("Trending Movies")}
+            onClick={() => setCurrentPage("Popular Movies")}
           >
             Popular Movies
           </Link>

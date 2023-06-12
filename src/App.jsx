@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import {
-  fetchHome,
+  fetch,
   fetchPopularTv,
   fetchTrendingMovies,
   fetchTrendingTv,
@@ -16,23 +16,30 @@ function App() {
   useEffect(() => {
     switch (currentPage) {
       case "Home":
-        fetchHome().then((data) => {
-          setData(data);
-          console.log(data);
+        fetch("discover/movie").then((res) => {
+          setData(res);
         });
+        // fetch("discover/tv").then((res) => {
+        //   setData(res.concat(data));
+        // });
         break;
       case "Trending Shows":
-        fetchTrendingTv().then((data) => {
+        fetch("trending/tv/day").then((data) => {
           setData(data);
         });
         break;
       case "Trending Movies":
-        fetchTrendingMovies().then((data) => {
+        fetch("trending/movie/day").then((data) => {
           setData(data);
         });
         break;
       case "Popular Shows":
-        fetchPopularTv().then((data) => {
+        fetch("tv/popular").then((data) => {
+          setData(data);
+        });
+        break;
+      case "Popular Movies":
+        fetch("movie/popular").then((data) => {
           setData(data);
         });
         break;
@@ -46,6 +53,7 @@ function App() {
         <Route path="/trending-tv" element={<Feed data={data} />} />
         <Route path="/trending-movie" element={<Feed data={data} />} />
         <Route path="/popular-tv" element={<Feed data={data} />} />
+        <Route path="/popular-movie" element={<Feed data={data} />} />
       </Routes>
     </div>
   );
