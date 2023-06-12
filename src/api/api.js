@@ -9,7 +9,6 @@ const fetch = async (url) => {
         api_key: api_key,
       },
     });
-    console.log(response.data.results);
     return response.data.results;
   } catch (error) {
     console.error("Error fetching data:", error);
