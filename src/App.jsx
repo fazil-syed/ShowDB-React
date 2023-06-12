@@ -1,15 +1,13 @@
-import { Feed } from "./components/Feed";
-import { Navbar } from "./components/Navbar";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { TrendingShows } from "./components/TrendingShows";
 import {
   fetchHome,
   fetchPopularTv,
   fetchTrendingMovies,
   fetchTrendingTv,
 } from "./api/api";
-import { TrendingMovies } from "./components/TrendingMovies";
+import { Feed } from "./components/Feed";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   const [data, setData] = useState(null);
