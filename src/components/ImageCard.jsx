@@ -1,7 +1,7 @@
 import React from "react";
 
 export const ImageCard = (props) => {
-  const { item } = props;
+  const { item, type } = props;
   const baseUrl = "http://image.tmdb.org/t/p/w500";
   const imageUrl = `${baseUrl}${item.poster_path}`;
   return (
@@ -14,7 +14,9 @@ export const ImageCard = (props) => {
         />
       </div>
       <div className="px-8 py-4">
-        <div className="font-bold text-xl text-gray-800 mb-2">{item.name}</div>
+        <div className="font-bold text-xl text-gray-800 mb-2">
+          {item.name || item.original_title}
+        </div>
       </div>
     </div>
   );

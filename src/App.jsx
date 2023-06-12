@@ -1,38 +1,53 @@
-import { Home } from "./components/Home";
+import { Feed } from "./components/Feed";
 import { Navbar } from "./components/Navbar";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import axios from "axios";
 import { TrendingShows } from "./components/TrendingShows";
+import {
+  fetchHome,
+  fetchPopularTv,
+  fetchTrendingMovies,
+  fetchTrendingTv,
+} from "./api/api";
+import { TrendingMovies } from "./components/TrendingMovies";
 
 function App() {
   const [data, setData] = useState(null);
+  const [currentPage, setCurrentPage] = useState("Home");
 
   useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/tv/popular",
-        {
-          params: {
-            api_key: "b3786a390467799c11abd24aaa2ea7b4",
-          },
-        }
-      );
-
-      setData(response.data.results);
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    switch (currentPage) {
+      case "Home":
+        fetchHome().then((data) => {
+          setData(data);
+          console.log(data);
+        });
+        break;
+      case "Trending Shows":
+        fetchTrendingTv().then((data) => {
+          setData(data);
+        });
+        break;
+      case "Trending Movies":
+        fetchTrendingMovies().then((data) => {
+          setData(data);
+        });
+        break;
+      case "Popular Shows":
+        fetchPopularTv().then((data) => {
+          setData(data);
+        });
+        break;
     }
-  };
+  }, [currentPage]);
   return (
     <div className="App">
-      <Navbar />
+      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <Routes>
-        <Route path="/" element={<Home data={data} />} />
-        <Route path="/trending" element={<TrendingShows />} />
+        <Route path="/" element={<Feed data={data} />} />
+        <Route path="/trending-tv" element={<Feed data={data} />} />
+        <Route path="/trending-movie" element={<Feed data={data} />} />
+        <Route path="/popular-tv" element={<Feed data={data} />} />
       </Routes>
     </div>
   );
