@@ -1,4 +1,4 @@
 # SHOWDB
 
-This project was can be viewed at[ShowDB](https://showdb-fazil.netlify.app/).
+This project was can be viewed at [ShowDB](https://showdb-fazil.netlify.app/).
 
