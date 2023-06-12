@@ -16,14 +16,10 @@ function App() {
   useEffect(() => {
     switch (currentPage) {
       case "Home":
-        fetch("discover/movie").then((res) => {
-          console.log(res);
-          setData(res);
+        fetch("discover/movie").then((data) => {
+          setData(data);
         });
-        fetch("discover/tv").then((res) => {
-          console.log(res);
-          setData(res.concat(data));
-        });
+
         break;
       case "Trending Shows":
         fetch("trending/tv/day").then((data) => {
