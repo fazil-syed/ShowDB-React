@@ -71,7 +71,7 @@ export const Navbar = (props) => {
         </li>
       </ul>
       <div className="relative flex items-center mr-5">
-        <Link to="/search">
+        <Link to="/">
           <input
             type="text"
             placeholder="Search"
@@ -80,19 +80,13 @@ export const Navbar = (props) => {
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-            <button type="submit">
-              <div
-                className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
-                onClick={() => {
-                  setSearchTerm(searchTermBuffer);
-                  setCurrentPage("Search");
-                  setSearchTermBuffer("");
-                }}
-              >
-                <FontAwesomeIcon icon={faSearch} className="text-gray-500" />
-              </div>
-            </button>
+          <div
+            className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+            onClick={handleSearch}
+          >
+            <div className="text-gray-500">
+              <FontAwesomeIcon icon={faSearch} />
+            </div>
           </div>
         </Link>
       </div>

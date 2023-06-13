@@ -64,7 +64,6 @@ function App() {
         <Route path="/trending-movie" element={<Feed data={data} />} />
         <Route path="/popular-tv" element={<Feed data={data} />} />
         <Route path="/popular-movie" element={<Feed data={data} />} />
-        <Route path="/search" element={<Feed data={data} />} />
       </Routes>
     </div>
   );
