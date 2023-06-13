@@ -12,6 +12,7 @@ import { Navbar } from "./components/Navbar";
 function App() {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState("Home");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     switch (currentPage) {
@@ -41,17 +42,29 @@ function App() {
           setData(data);
         });
         break;
+      case "Search":
+        fetch(`search/tv?query=${searchTerm}`).then((data) => {
+          setData(data);
+          console.log(data);
+        });
+        break;
     }
-  }, [currentPage]);
+  }, [currentPage, searchTerm]);
   return (
     <div className="App">
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navbar
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
       <Routes>
         <Route path="/" element={<Feed data={data} />} />
         <Route path="/trending-tv" element={<Feed data={data} />} />
         <Route path="/trending-movie" element={<Feed data={data} />} />
         <Route path="/popular-tv" element={<Feed data={data} />} />
         <Route path="/popular-movie" element={<Feed data={data} />} />
+        <Route path="/search" element={<Feed data={data} />} />
       </Routes>
     </div>
   );
