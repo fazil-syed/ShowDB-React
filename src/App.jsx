@@ -11,6 +11,7 @@ import { Navbar } from "./components/Navbar";
 
 function App() {
   const [data, setData] = useState(null);
+  const [movieData, setMovieData] = useState(null);
   const [currentPage, setCurrentPage] = useState("Home");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -19,33 +20,40 @@ function App() {
       case "Home":
         fetch("discover/movie").then((data) => {
           setData(data);
+          setMovieData(null);
         });
 
         break;
       case "Trending Shows":
         fetch("trending/tv/day").then((data) => {
           setData(data);
+          setMovieData(null);
         });
         break;
       case "Trending Movies":
         fetch("trending/movie/day").then((data) => {
           setData(data);
+          setMovieData(null);
         });
         break;
       case "Popular Shows":
         fetch("tv/popular").then((data) => {
           setData(data);
+          setMovieData(null);
         });
         break;
       case "Popular Movies":
         fetch("movie/popular").then((data) => {
           setData(data);
+          setMovieData(null);
         });
         break;
       case "Search":
         fetch(`search/tv?query=${searchTerm}`).then((data) => {
           setData(data);
-          console.log(data);
+        });
+        fetch(`search/movie?query=${searchTerm}`).then((data) => {
+          setMovieData(data);
         });
         break;
     }
@@ -59,11 +67,32 @@ function App() {
         setSearchTerm={setSearchTerm}
       />
       <Routes>
-        <Route path="/" element={<Feed data={data} />} />
-        <Route path="/trending-tv" element={<Feed data={data} />} />
-        <Route path="/trending-movie" element={<Feed data={data} />} />
-        <Route path="/popular-tv" element={<Feed data={data} />} />
-        <Route path="/popular-movie" element={<Feed data={data} />} />
+        <Route
+          path="/"
+          element={
+            <Feed currentPage={currentPage} data={data} movieData={movieData} />
+          }
+        />
+        <Route
+          path="/trending-tv"
+          currentPage={currentPage}
+          element={<Feed data={data} />}
+        />
+        <Route
+          path="/trending-movie"
+          currentPage={currentPage}
+          element={<Feed data={data} />}
+        />
+        <Route
+          path="/popular-tv"
+          currentPage={currentPage}
+          element={<Feed data={data} />}
+        />
+        <Route
+          path="/popular-movie"
+          currentPage={currentPage}
+          element={<Feed data={data} />}
+        />
       </Routes>
     </div>
   );
