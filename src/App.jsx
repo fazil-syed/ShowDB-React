@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import {
-  fetch,
-  fetchPopularTv,
-  fetchTrendingMovies,
-  fetchTrendingTv,
-} from "./api/api";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { fetch } from "./api/api";
 import { Feed } from "./components/Feed";
 import { Navbar } from "./components/Navbar";
 
@@ -14,7 +9,14 @@ function App() {
   const [movieData, setMovieData] = useState(null);
   const [currentPage, setCurrentPage] = useState("Home");
   const [searchTerm, setSearchTerm] = useState("");
+  const location = useLocation();
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [location]);
   useEffect(() => {
     switch (currentPage) {
       case "Home":
