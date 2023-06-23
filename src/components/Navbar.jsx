@@ -28,16 +28,12 @@ export const Navbar = (props) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleMenuClick = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <nav className="sticky top-0 z-50 bg-black font-sans text-lg">
       <div className="flex items-center justify-between px-4 py-3 md:px-10">
         <div className="flex items-center">
           <Link to={"/"} onClick={() => setCurrentPage("Home")}>
-            <img src="favicon.png" alt="Logo" className="w-16 h-auto" />
+            <img src="favicon.png" alt="Logo" className="w-16 p-2" />
           </Link>
           <div className="hidden md:flex ml-8">
             <ul className="flex flex-row gap-5">
@@ -95,20 +91,22 @@ export const Navbar = (props) => {
               isMobileMenuOpen ? "hidden" : "block"
             }`}
           >
-            <input
-              type="text"
-              placeholder="Search"
-              className="px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={searchTermBuffer}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-            />
-            <div
-              className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
-              onClick={handleSearch}
-            >
-              <div className="text-gray-500">
-                <FontAwesomeIcon icon={faSearch} />
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search"
+                className="px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={searchTermBuffer}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+              />
+              <div
+                className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                onClick={handleSearch}
+              >
+                <div className="text-gray-500">
+                  <FontAwesomeIcon icon={faSearch} />
+                </div>
               </div>
             </div>
           </div>
@@ -121,7 +119,7 @@ export const Navbar = (props) => {
               <Link
                 to="/trending-tv"
                 className="text-white"
-                onClick={handleMenuClick}
+                onClick={toggleMobileMenu}
               >
                 Trending Shows
               </Link>
@@ -130,7 +128,7 @@ export const Navbar = (props) => {
               <Link
                 to="/popular-tv"
                 className="text-white"
-                onClick={handleMenuClick}
+                onClick={toggleMobileMenu}
               >
                 Popular Shows
               </Link>
@@ -139,7 +137,7 @@ export const Navbar = (props) => {
               <Link
                 to="/trending-movie"
                 className="text-white"
-                onClick={handleMenuClick}
+                onClick={toggleMobileMenu}
               >
                 Trending Movies
               </Link>
@@ -148,23 +146,29 @@ export const Navbar = (props) => {
               <Link
                 to="/popular-movie"
                 className="text-white"
-                onClick={handleMenuClick}
+                onClick={toggleMobileMenu}
               >
                 Popular Movies
               </Link>
             </li>
             <li>
-              <input
-                type="text"
-                placeholder="Search"
-                className="px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={searchTermBuffer}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-              />
-
-              <div className="text-gray-500 absolute top-46 left-60">
-                <FontAwesomeIcon icon={faSearch} />
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value={searchTermBuffer}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyDown}
+                />
+                <div
+                  className="absolute inset-y-0 right-[6rem] flex items-center pr-3 cursor-pointer"
+                  onClick={handleSearch}
+                >
+                  <div className="text-gray-500">
+                    <FontAwesomeIcon icon={faSearch} />
+                  </div>
+                </div>
               </div>
             </li>
           </ul>
