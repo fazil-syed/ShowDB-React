@@ -81,34 +81,42 @@ export const Navbar = (props) => {
           </div>
         </div>
         <div className="relative flex items-center mr-5">
-          <input
-            type="text"
-            placeholder="Search"
-            className="px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={searchTermBuffer}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-          />
+          <div className="md:hidden">
+            <button
+              className="text-white"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle Mobile Menu"
+            >
+              <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
+            </button>
+          </div>
           <div
-            className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
-            onClick={handleSearch}
+            className={`hidden md:block ${
+              isMobileMenuOpen ? "hidden" : "block"
+            }`}
           >
-            <div className="text-gray-500">
-              <FontAwesomeIcon icon={faSearch} />
+            <input
+              type="text"
+              placeholder="Search"
+              className="px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={searchTermBuffer}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+            />
+            <div
+              className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+              onClick={handleSearch}
+            >
+              <div className="text-gray-500">
+                <FontAwesomeIcon icon={faSearch} />
+              </div>
             </div>
           </div>
         </div>
-        <button
-          className="md:hidden text-white"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle Mobile Menu"
-        >
-          <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
-        </button>
       </div>
       {isMobileMenuOpen && (
-        <div className="flex flex-col items-center mt-2 mb-4">
-          <ul className="flex flex-col items-center gap-4">
+        <div className="px-4 py-3 md:hidden">
+          <ul className="flex flex-col gap-4">
             <li>
               <Link
                 to="/trending-tv"
@@ -145,21 +153,21 @@ export const Navbar = (props) => {
                 Popular Movies
               </Link>
             </li>
+            <li>
+              <input
+                type="text"
+                placeholder="Search"
+                className="px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={searchTermBuffer}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+              />
+
+              <div className="text-gray-500 absolute top-46 left-60">
+                <FontAwesomeIcon icon={faSearch} />
+              </div>
+            </li>
           </ul>
-          <input
-            type="text"
-            placeholder="Search"
-            className="px-4 py-2 mt-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={searchTermBuffer}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-          />
-          <div
-            className="mt-4 text-gray-500 cursor-pointer"
-            onClick={handleSearch}
-          >
-            <FontAwesomeIcon icon={faSearch} /> Search
-          </div>
         </div>
       )}
     </nav>
