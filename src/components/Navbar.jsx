@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export const Navbar = (props) => {
   const { currentPage, setCurrentPage, searchTerm, setSearchTerm } = props;
@@ -42,16 +42,20 @@ export const Navbar = (props) => {
           onClick={toggleMobileMenu}
           aria-label="Toggle Mobile Menu"
         >
-          <FontAwesomeIcon icon={faBars} />
+          {isMobileMenuOpen ? (
+            <FontAwesomeIcon icon={faTimes} />
+          ) : (
+            <FontAwesomeIcon icon={faBars} />
+          )}
         </button>
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden fixed top-0 left-0 w-full h-screen bg-black transition-transform duration-300 transform ${
-            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          className={`md:hidden fixed top-0 left-0 w-full bg-black transition-transform duration-300 transform ${
+            isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
           }`}
         >
-          <ul className="flex flex-col items-center justify-center h-full gap-4">
+          <ul className="flex flex-col items-center justify-center gap-4 pt-16 pb-6">
             <li>
               <Link
                 to="/trending-tv"
@@ -131,6 +135,7 @@ export const Navbar = (props) => {
           </li>
         </ul>
 
+        {/* Search Input */}
         <div className="relative flex items-center">
           <input
             type="text"
