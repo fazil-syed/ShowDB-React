@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const ImageCard = (props) => {
+export const DetailCard = (props) => {
   const { item } = props;
   const baseUrl = "http://image.tmdb.org/t/p/w500";
   const imageUrl = `${baseUrl}${item.poster_path}`;
@@ -10,7 +10,7 @@ export const ImageCard = (props) => {
     <>
       <Link to={detailUrl}>
         {item.poster_path !== null && (
-          <div className="max-w-sm rounded overflow-hidden shadow-lg ">
+          <div className="max-w-lg rounded overflow-hidden shadow-lg ">
             <div className="group relative overflow-hidden">
               <img
                 className="w-full transition-transform duration-300 transform hover:scale-105"

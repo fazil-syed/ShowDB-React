@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
+
 export const Navbar = (props) => {
   const { currentPage, setCurrentPage, searchTerm, setSearchTerm } = props;
   const [searchTermBuffer, setSearchTermBuffer] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSearch = () => {
-    // Perform the search action using the searchTerm
     setSearchTerm(searchTermBuffer);
     setSearchTermBuffer("");
     setCurrentPage("Search");
@@ -24,54 +24,114 @@ export const Navbar = (props) => {
       handleSearch();
     }
   };
-  return (
-    <nav className="sticky top-0 z-50 flex bg-black font-sans text-lg justify-between">
-      <ul className="nav-list flex flex-row gap-5 items-center  mr-1">
-        <li className="nav-item">
-          <Link to={"/"} onClick={() => setCurrentPage("Home")}>
-            <img src="favicon.png" alt="Logo" className="w-16 p-2" />
-          </Link>
-        </li>
 
-        <li className="nav-item">
-          <Link
-            to="/trending-tv"
-            className="text-white"
-            onClick={() => setCurrentPage("Trending Shows")}
-          >
-            Trending Shows
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            to="/popular-tv"
-            className="text-white"
-            onClick={() => setCurrentPage("Popular Shows")}
-          >
-            Popular Shows
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            to="/trending-movie"
-            className="text-white"
-            onClick={() => setCurrentPage("Trending Movies")}
-          >
-            Trending Movies
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            to="/popular-movie"
-            className="text-white"
-            onClick={() => setCurrentPage("Popular Movies")}
-          >
-            Popular Movies
-          </Link>
-        </li>
-      </ul>
-      <div className="relative flex items-center mr-5">
-        <Link to="/">
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  return (
+    <nav className="sticky top-0 z-50 bg-black font-sans text-lg">
+      <div className="flex items-center justify-between px-4 py-3 md:px-10">
+        <Link to={"/"} onClick={() => setCurrentPage("Home")}>
+          <img src="favicon.png" alt="Logo" className="w-16 p-2" />
+        </Link>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle Mobile Menu"
+        >
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden fixed top-0 left-0 w-full h-screen bg-black transition-transform duration-300 transform ${
+            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <ul className="flex flex-col items-center justify-center h-full gap-4">
+            <li>
+              <Link
+                to="/trending-tv"
+                className="text-white"
+                onClick={() => setCurrentPage("Trending Shows")}
+              >
+                Trending Shows
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/popular-tv"
+                className="text-white"
+                onClick={() => setCurrentPage("Popular Shows")}
+              >
+                Popular Shows
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/trending-movie"
+                className="text-white"
+                onClick={() => setCurrentPage("Trending Movies")}
+              >
+                Trending Movies
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/popular-movie"
+                className="text-white"
+                onClick={() => setCurrentPage("Popular Movies")}
+              >
+                Popular Movies
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-10">
+          <li>
+            <Link
+              to="/trending-tv"
+              className="text-white"
+              onClick={() => setCurrentPage("Trending Shows")}
+            >
+              Trending Shows
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/popular-tv"
+              className="text-white"
+              onClick={() => setCurrentPage("Popular Shows")}
+            >
+              Popular Shows
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/trending-movie"
+              className="text-white"
+              onClick={() => setCurrentPage("Trending Movies")}
+            >
+              Trending Movies
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/popular-movie"
+              className="text-white"
+              onClick={() => setCurrentPage("Popular Movies")}
+            >
+              Popular Movies
+            </Link>
+          </li>
+        </ul>
+
+        <div className="relative flex items-center">
           <input
             type="text"
             placeholder="Search"
@@ -88,7 +148,7 @@ export const Navbar = (props) => {
               <FontAwesomeIcon icon={faSearch} />
             </div>
           </div>
-        </Link>
+        </div>
       </div>
     </nav>
   );

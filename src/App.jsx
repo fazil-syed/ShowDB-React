@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { fetch } from "./api/api";
 import { Feed } from "./components/Feed";
 import { Navbar } from "./components/Navbar";
+import DetailPage from "./components/Detail";
 
 function App() {
   const [data, setData] = useState(null);
@@ -94,6 +95,11 @@ function App() {
           path="/popular-movie"
           currentPage={currentPage}
           element={<Feed data={data} />}
+        />
+        <Route
+          path="/detail/:id"
+          currentPage={currentPage}
+          element={<DetailPage />}
         />
       </Routes>
     </div>
