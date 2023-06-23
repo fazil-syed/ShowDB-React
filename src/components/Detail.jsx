@@ -31,18 +31,18 @@ const MovieDetailPage = () => {
         <div className="w-full md:w-2/3">
           <h2 className="text-3xl font-bold mb-4">{title}</h2>
           <p className="text-gray-600 mb-8">{overview}</p>
+          {trailerUrl && (
+            <div className="aspect-w-16 aspect-h-9">
+              <iframe
+                src={trailerUrl}
+                title={`${title} Trailer`}
+                className="w-full h-full"
+                allowFullScreen
+              />
+            </div>
+          )}
         </div>
       </div>
-      {trailerUrl && (
-        <div className="aspect-w-16 aspect-h-9">
-          <iframe
-            src={trailerUrl}
-            title={`${title} Trailer`}
-            className="w-full h-full"
-            allowFullScreen
-          />
-        </div>
-      )}
     </div>
   );
 };

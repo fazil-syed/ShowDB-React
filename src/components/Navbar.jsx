@@ -162,7 +162,7 @@ export const Navbar = (props) => {
                   onKeyDown={handleKeyDown}
                 />
                 <div
-                  className="absolute inset-y-0 right-[6rem] flex items-center pr-3 cursor-pointer"
+                  className="absolute inset-y-0 right-[5.5rem] flex items-center pr-3 cursor-pointer"
                   onClick={handleSearch}
                 >
                   <div className="text-gray-500">
