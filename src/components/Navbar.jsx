@@ -37,7 +37,7 @@ export const Navbar = (props) => {
       <div className="flex items-center justify-between px-4 py-3 md:px-10">
         <div className="flex items-center">
           <Link to={"/"} onClick={() => setCurrentPage("Home")}>
-            <img src="favicon.png" alt="Logo" className="w-16 p-2" />
+            <img src="favicon.png" alt="Logo" className="w-16 h-auto" />
           </Link>
           <div className="hidden md:flex ml-8">
             <ul className="flex flex-row gap-5">
@@ -103,10 +103,9 @@ export const Navbar = (props) => {
           onClick={toggleMobileMenu}
           aria-label="Toggle Mobile Menu"
         >
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
         </button>
       </div>
-
       {isMobileMenuOpen && (
         <div className="flex flex-col items-center mt-2 mb-4">
           <ul className="flex flex-col items-center gap-4">
@@ -147,6 +146,20 @@ export const Navbar = (props) => {
               </Link>
             </li>
           </ul>
+          <input
+            type="text"
+            placeholder="Search"
+            className="px-4 py-2 mt-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={searchTermBuffer}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <div
+            className="mt-4 text-gray-500 cursor-pointer"
+            onClick={handleSearch}
+          >
+            <FontAwesomeIcon icon={faSearch} /> Search
+          </div>
         </div>
       )}
     </nav>
