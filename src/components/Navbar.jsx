@@ -35,61 +35,51 @@ export const Navbar = (props) => {
   return (
     <nav className="sticky top-0 z-50 bg-black font-sans text-lg">
       <div className="flex items-center justify-between px-4 py-3 md:px-10">
-        <ul className="flex flex-row gap-5 items-center">
-          <li>
-            <Link to={"/"} onClick={() => setCurrentPage("Home")}>
-              <img src="favicon.png" alt="Logo" className="w-16 p-2" />
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/trending-tv"
-              className="text-white"
-              onClick={() => {
-                setCurrentPage("Trending Shows");
-                handleMenuClick();
-              }}
-            >
-              Trending Shows
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/popular-tv"
-              className="text-white"
-              onClick={() => {
-                setCurrentPage("Popular Shows");
-                handleMenuClick();
-              }}
-            >
-              Popular Shows
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/trending-movie"
-              className="text-white"
-              onClick={() => {
-                setCurrentPage("Trending Movies");
-                handleMenuClick();
-              }}
-            >
-              Trending Movies
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/popular-movie"
-              className="text-white"
-              onClick={() => {
-                setCurrentPage("Popular Movies");
-                handleMenuClick();
-              }}
-            >
-              Popular Movies
-            </Link>
-          </li>
-        </ul>
+        <div className="flex items-center">
+          <Link to={"/"} onClick={() => setCurrentPage("Home")}>
+            <img src="favicon.png" alt="Logo" className="w-16 p-2" />
+          </Link>
+          <div className="hidden md:flex ml-8">
+            <ul className="flex flex-row gap-5">
+              <li>
+                <Link
+                  to="/trending-tv"
+                  className="text-white"
+                  onClick={() => setCurrentPage("Trending Shows")}
+                >
+                  Trending Shows
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/popular-tv"
+                  className="text-white"
+                  onClick={() => setCurrentPage("Popular Shows")}
+                >
+                  Popular Shows
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/trending-movie"
+                  className="text-white"
+                  onClick={() => setCurrentPage("Trending Movies")}
+                >
+                  Trending Movies
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/popular-movie"
+                  className="text-white"
+                  onClick={() => setCurrentPage("Popular Movies")}
+                >
+                  Popular Movies
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div className="relative flex items-center mr-5">
           <input
             type="text"
@@ -117,28 +107,14 @@ export const Navbar = (props) => {
         </button>
       </div>
 
-      <div
-        className={`md:hidden fixed top-0 left-0 w-full h-full bg-black transition-transform duration-300 transform ${
-          isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center gap-4 pt-16 pb-6">
-          <button
-            className="text-white"
-            onClick={handleMenuClick}
-            aria-label="Close Mobile Menu"
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </button>
-          <ul className="flex flex-col items-center justify-center gap-4">
+      {isMobileMenuOpen && (
+        <div className="flex flex-col items-center mt-2 mb-4">
+          <ul className="flex flex-col items-center gap-4">
             <li>
               <Link
                 to="/trending-tv"
                 className="text-white"
-                onClick={() => {
-                  setCurrentPage("Trending Shows");
-                  handleMenuClick();
-                }}
+                onClick={handleMenuClick}
               >
                 Trending Shows
               </Link>
@@ -147,10 +123,7 @@ export const Navbar = (props) => {
               <Link
                 to="/popular-tv"
                 className="text-white"
-                onClick={() => {
-                  setCurrentPage("Popular Shows");
-                  handleMenuClick();
-                }}
+                onClick={handleMenuClick}
               >
                 Popular Shows
               </Link>
@@ -159,10 +132,7 @@ export const Navbar = (props) => {
               <Link
                 to="/trending-movie"
                 className="text-white"
-                onClick={() => {
-                  setCurrentPage("Trending Movies");
-                  handleMenuClick();
-                }}
+                onClick={handleMenuClick}
               >
                 Trending Movies
               </Link>
@@ -171,17 +141,14 @@ export const Navbar = (props) => {
               <Link
                 to="/popular-movie"
                 className="text-white"
-                onClick={() => {
-                  setCurrentPage("Popular Movies");
-                  handleMenuClick();
-                }}
+                onClick={handleMenuClick}
               >
                 Popular Movies
               </Link>
             </li>
           </ul>
         </div>
-      </div>
+      )}
     </nav>
   );
 };
