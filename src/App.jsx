@@ -73,33 +73,43 @@ function App() {
         <Route
           path="/"
           element={
-            <Feed currentPage={currentPage} data={data} movieData={movieData} />
+            <Feed
+              currentPage={currentPage}
+              data={data}
+              movieData={movieData}
+              type="movie"
+            />
           }
         />
         <Route
           path="/trending-tv"
           currentPage={currentPage}
-          element={<Feed data={data} />}
+          element={<Feed data={data} type="tv" />}
         />
         <Route
           path="/trending-movie"
           currentPage={currentPage}
-          element={<Feed data={data} />}
+          element={<Feed data={data} type="movie" />}
         />
         <Route
           path="/popular-tv"
           currentPage={currentPage}
-          element={<Feed data={data} />}
+          element={<Feed data={data} type="tv" />}
         />
         <Route
           path="/popular-movie"
           currentPage={currentPage}
-          element={<Feed data={data} />}
+          element={<Feed data={data} type="movie" />}
         />
         <Route
-          path="/detail/:id"
+          path="/movie-detail/:id"
           currentPage={currentPage}
-          element={<DetailPage />}
+          element={<DetailPage type="movie" />}
+        />
+        <Route
+          path="/show-detail/:id"
+          currentPage={currentPage}
+          element={<DetailPage type="tv" />}
         />
       </Routes>
     </div>
