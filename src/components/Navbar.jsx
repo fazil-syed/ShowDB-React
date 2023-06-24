@@ -24,7 +24,10 @@ export const Navbar = (props) => {
       handleSearch();
     }
   };
-
+  const currentPageChange = (page) => {
+    setCurrentPage(page);
+    toggleMobileMenu();
+  };
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -120,7 +123,7 @@ export const Navbar = (props) => {
               <Link
                 to="/trending-tv"
                 className="text-white"
-                onClick={toggleMobileMenu}
+                onClick={() => currentPageChange("Trending Shows")}
               >
                 Trending Shows
               </Link>
@@ -129,7 +132,7 @@ export const Navbar = (props) => {
               <Link
                 to="/popular-tv"
                 className="text-white"
-                onClick={toggleMobileMenu}
+                onClick={() => currentPageChange("Popular Shows")}
               >
                 Popular Shows
               </Link>
@@ -138,7 +141,7 @@ export const Navbar = (props) => {
               <Link
                 to="/trending-movie"
                 className="text-white"
-                onClick={toggleMobileMenu}
+                onClick={() => currentPageChange("Trending Movies")}
               >
                 Trending Movies
               </Link>
@@ -147,7 +150,7 @@ export const Navbar = (props) => {
               <Link
                 to="/popular-movie"
                 className="text-white"
-                onClick={toggleMobileMenu}
+                onClick={() => currentPageChange("Popular Movies")}
               >
                 Popular Movies
               </Link>
