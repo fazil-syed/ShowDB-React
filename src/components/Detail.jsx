@@ -55,7 +55,7 @@ const MovieDetailPage = (props) => {
                   src={trailerUrl}
                   title={`${title} Trailer`}
                   className="w-full"
-                  style={{ height: 450, zIndex: 5 }}
+                  style={{ height: 450 }}
                   frameBorder="0"
                   allowFullScreen
                 ></iframe>
@@ -63,18 +63,19 @@ const MovieDetailPage = (props) => {
             </div>
           )}
         </div>
-        <div className="my-8">
-          <h3 className="text-2xl font-bold mb-4">Cast</h3>
-          <div className="flex flex-wrap gap-6">
-            {castWithImages.map((cast) => (
-              <ImageCard
-                key={cast.id}
-                item={cast}
-                isCast={true}
-                imageSize="w-40"
-              />
-            ))}
-          </div>
+      </div>
+
+      <div className="my-8">
+        <h3 className="text-2xl font-bold mb-4">Cast</h3>
+        <div className="flex flex-wrap gap-6">
+          {castWithImages.map((cast) => (
+            <ImageCard
+              key={cast.id}
+              item={cast}
+              isCast={true}
+              imageSize="w-40"
+            />
+          ))}
         </div>
       </div>
     </div>
