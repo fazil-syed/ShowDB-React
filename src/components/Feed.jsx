@@ -5,7 +5,7 @@ export const Feed = (props) => {
   const { currentPage, data, movieData, type } = props;
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex ml-6 md:ml-0 flex-col gap-10">
       {currentPage === "Search" && (
         <h1 className="text-center font-sans text-6xl">TV Shows</h1>
       )}
@@ -24,7 +24,7 @@ export const Feed = (props) => {
       {currentPage === "Search" && (
         <div className="mt-10">
           <h1 className="text-center font-sans text-6xl">Movies</h1>
-          <div className="flex flex-wrap gap-4 md:gap-8 mt-5 md:ml-12">
+          <div className="flex flex-wrap gap-4 md:gap-8 mt-5 ml-4 md:ml-12">
             {movieData &&
               movieData.map((item) => (
                 <ImageCard
