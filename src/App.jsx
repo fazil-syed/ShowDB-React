@@ -77,7 +77,7 @@ function App() {
               currentPage={currentPage}
               data={data}
               movieData={movieData}
-              type="movie"
+              type={null}
             />
           }
         />
@@ -103,13 +103,23 @@ function App() {
         />
         <Route
           path="/movie-detail/:id"
-          currentPage={currentPage}
-          element={<DetailPage type="movie" />}
+          element={
+            <DetailPage
+              type="movie"
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }
         />
         <Route
           path="/show-detail/:id"
-          currentPage={currentPage}
-          element={<DetailPage type="tv" />}
+          element={
+            <DetailPage
+              type="tv"
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }
         />
       </Routes>
     </div>
