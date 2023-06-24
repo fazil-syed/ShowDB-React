@@ -12,6 +12,7 @@ export const Navbar = (props) => {
     setSearchTerm(searchTermBuffer);
     setSearchTermBuffer("");
     setCurrentPage("Search");
+    setIsMobileMenuOpen(!isMobileMenuOpen);
     navigate("/");
   };
 
