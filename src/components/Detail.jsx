@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetch } from "../api/api";
 import { ImageCard } from "./ImageCard";
+import { Loader } from "./Loader";
 
 const MovieDetailPage = (props) => {
   const { type } = props;
@@ -15,7 +16,7 @@ const MovieDetailPage = (props) => {
   }, [id]);
 
   if (!movie || cast.length === 0) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const { title, name, overview, videos, poster_path } = movie;
@@ -46,7 +47,9 @@ const MovieDetailPage = (props) => {
           <h2 className="text-2xl md:text-3xl font-bold mb-4 mt-0">
             {title || name}
           </h2>
-          <p className="mb-4 mt-0">{overview}</p>
+          <p className="mb-4 mt-0 font-medium subpixel-antialiased	text-lg	">
+            {overview}
+          </p>
           {trailerUrl && (
             <div className="mt-8">
               <h3 className="text-xl font-bold mb-4">Trailer</h3>

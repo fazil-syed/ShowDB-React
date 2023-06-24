@@ -15,20 +15,18 @@ export const ImageCard = (props) => {
   if (isCast) {
     return (
       <div className={`max-w-md rounded-lg overflow-hidden ${imageSize}`}>
-        <Link to={detailUrl}>
-          <div className="group relative overflow-hidden">
-            <img
-              className="w-full h-64 object-cover transition-transform duration-300 transform hover:scale-105"
-              src={imageUrl}
-              alt="Image description"
-            />
+        <div className="group relative overflow-hidden">
+          <img
+            className="w-full h-64 object-cover transition-transform duration-300 transform hover:scale-105"
+            src={imageUrl}
+            alt="Image description"
+          />
+        </div>
+        <div className="px-4 py-2">
+          <div className="font-bold text-xl leading-none	 text-gray-800 ">
+            {item.name}
           </div>
-          <div className="px-4 py-2">
-            <div className="font-bold text-xl leading-none	 text-gray-800 ">
-              {item.name}
-            </div>
-          </div>
-        </Link>
+        </div>
       </div>
     );
   }

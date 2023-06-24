@@ -4,6 +4,7 @@ import { fetch } from "./api/api";
 import { Feed } from "./components/Feed";
 import { Navbar } from "./components/Navbar";
 import DetailPage from "./components/Detail";
+import { Loader } from "./components/Loader";
 
 function App() {
   const [data, setData] = useState(null);
@@ -61,6 +62,10 @@ function App() {
         break;
     }
   }, [currentPage, searchTerm]);
+  if (!data) {
+    return <Loader />;
+  }
+
   return (
     <div className="App">
       <Navbar
