@@ -97,7 +97,7 @@ export const Navbar = (props) => {
                 <input
                   type="text"
                   placeholder="Search"
-                  className={`px-3 py-1  border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 block
+                  className={`px-3 py-1 w-56 mr-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 block
                   }`}
                   value={searchTermBuffer}
                   onChange={handleChange}
