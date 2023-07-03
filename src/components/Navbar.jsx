@@ -44,7 +44,7 @@ export const Navbar = (props) => {
 
   return (
     <nav className="sticky top-0 z-50 bg-black font-sans text-lg">
-      <div className="flex items-center justify-between px-4 py-3 md:px-10">
+      <div className="flex items-center justify-between px-4 md:py-1 md:px-10">
         <div className="flex items-center">
           <Link to={"/"} onClick={() => setCurrentPage("Home")}>
             <img src="favicon.png" alt="Logo" className="w-16 p-2" />
@@ -104,7 +104,7 @@ export const Navbar = (props) => {
                   onKeyDown={handleKeyDown}
                 />
                 <div
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                  className="absolute inset-y-0 right-0  flex items-center pr-3 cursor-pointer"
                   onClick={handleSearch}
                 >
                   <div className="text-gray-500">
@@ -148,7 +148,7 @@ export const Navbar = (props) => {
         </div>
       </div>
       {isMobileMenuOpen && (
-        <div className="px-4 py-3 md:hidden">
+        <div className="px-4 py-4 md:hidden">
           <ul className="flex flex-col gap-4">
             <li>
               <Link
