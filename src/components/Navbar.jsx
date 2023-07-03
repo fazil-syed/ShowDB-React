@@ -97,14 +97,14 @@ export const Navbar = (props) => {
                 <input
                   type="text"
                   placeholder="Search"
-                  className={`px-3 py-1 w-56 mr-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 block
+                  className={`px-3 py-1 w-56 mr-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 block
                   }`}
                   value={searchTermBuffer}
                   onChange={handleChange}
                   onKeyDown={handleKeyDown}
                 />
                 <div
-                  className="absolute inset-y-0 right-2  flex items-center pr-3 cursor-pointer"
+                  className="absolute inset-y-0 right-3  flex items-center pr-3 cursor-pointer"
                   onClick={handleSearch}
                 >
                   <div className="text-gray-500">
