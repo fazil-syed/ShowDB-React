@@ -37,7 +37,7 @@ export const ImageCard = (props) => {
         <Link to={detailUrl}>
           <div className="group relative overflow-hidden">
             <img
-              className="w-full object-cover transition-transform duration-300 transform hover:scale-105"
+              className="w-full rounded object-cover transition-transform duration-300 transform hover:scale-105"
               src={imageUrl}
               alt="Image description"
             />
