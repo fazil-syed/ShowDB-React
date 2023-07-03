@@ -43,7 +43,7 @@ export const ImageCard = (props) => {
             />
           </div>
           <div className="px-4 py-2">
-            <div className="font-bold text-lg md:text-2xl text-gray-800 mb-2 text-center">
+            <div className="font-bold text-xl md:text-2xl text-gray-800 mb-2 text-center">
               {item.name || item.title || item.original_title}
             </div>
           </div>

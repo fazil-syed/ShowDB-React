@@ -7,9 +7,9 @@ export const Feed = (props) => {
   return (
     <div className="flex ml-6 md:ml-0 flex-col gap-10">
       {currentPage === "Search" && (
-        <h1 className="text-center font-sans text-6xl">TV Shows</h1>
+        <h1 className="text-center font-sans mt-4 mb-0 text-6xl">TV Shows</h1>
       )}
-      <div className="flex flex-wrap gap-4 md:gap-8 mt-5 ml-4 md:ml-12">
+      <div className="flex flex-wrap gap-4 md:gap-8  ml-4 md:ml-12">
         {data &&
           data.map((item) => (
             <ImageCard
@@ -22,9 +22,11 @@ export const Feed = (props) => {
           ))}
       </div>
       {currentPage === "Search" && (
-        <div className="mt-10">
-          <h1 className="text-center font-sans text-6xl">Movies</h1>
-          <div className="flex flex-wrap gap-4 md:gap-8 mt-5 ml-4 md:ml-12">
+        <div className="">
+          <h1 className="text-center font-sans mb-10 -mt-3   text-6xl">
+            Movies
+          </h1>
+          <div className="flex flex-wrap gap-4 md:gap-8 ml-4 md:ml-12">
             {movieData &&
               movieData.map((item) => (
                 <ImageCard
