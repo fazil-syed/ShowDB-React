@@ -7,12 +7,14 @@ export const Navbar = (props) => {
   const { currentPage, setCurrentPage, searchTerm, setSearchTerm } = props;
   const [searchTermBuffer, setSearchTermBuffer] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
   const navigate = useNavigate();
+
   const handleSearch = () => {
     setSearchTerm(searchTermBuffer);
     setSearchTermBuffer("");
     setCurrentPage("Search");
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen(false);
     navigate("/");
   };
 
@@ -25,12 +27,19 @@ export const Navbar = (props) => {
       handleSearch();
     }
   };
+
   const currentPageChange = (page) => {
     setCurrentPage(page);
-    toggleMobileMenu();
+    setIsMobileMenuOpen(false);
   };
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsSearchVisible(false);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchVisible(!isSearchVisible);
   };
 
   return (
@@ -46,7 +55,7 @@ export const Navbar = (props) => {
                 <Link
                   to="/trending-tv"
                   className="text-white"
-                  onClick={() => setCurrentPage("Trending Shows")}
+                  onClick={() => currentPageChange("Trending Shows")}
                 >
                   Trending Shows
                 </Link>
@@ -55,7 +64,7 @@ export const Navbar = (props) => {
                 <Link
                   to="/popular-tv"
                   className="text-white"
-                  onClick={() => setCurrentPage("Popular Shows")}
+                  onClick={() => currentPageChange("Popular Shows")}
                 >
                   Popular Shows
                 </Link>
@@ -64,7 +73,7 @@ export const Navbar = (props) => {
                 <Link
                   to="/trending-movie"
                   className="text-white"
-                  onClick={() => setCurrentPage("Trending Movies")}
+                  onClick={() => currentPageChange("Trending Movies")}
                 >
                   Trending Movies
                 </Link>
@@ -73,7 +82,7 @@ export const Navbar = (props) => {
                 <Link
                   to="/popular-movie"
                   className="text-white"
-                  onClick={() => setCurrentPage("Popular Movies")}
+                  onClick={() => currentPageChange("Popular Movies")}
                 >
                   Popular Movies
                 </Link>
@@ -82,7 +91,28 @@ export const Navbar = (props) => {
           </div>
         </div>
         <div className="relative flex items-center mr-5">
-          <div className="md:hidden">
+          <div className="md:hidden flex flex-row justify-between ">
+            <div className="mr-2">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className={`px-3 py-1  border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 block
+                  }`}
+                  value={searchTermBuffer}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyDown}
+                />
+                <div
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                  onClick={handleSearch}
+                >
+                  <div className="text-gray-500">
+                    <FontAwesomeIcon icon={faSearch} />
+                  </div>
+                </div>
+              </div>
+            </div>
             <button
               className="text-white"
               onClick={toggleMobileMenu}
@@ -155,26 +185,6 @@ export const Navbar = (props) => {
               >
                 Popular Movies
               </Link>
-            </li>
-            <li>
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="px-4 py-2 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value={searchTermBuffer}
-                  onChange={handleChange}
-                  onKeyDown={handleKeyDown}
-                />
-                <div
-                  className="absolute inset-y-0 right-[5.5rem] flex items-center pr-3 cursor-pointer"
-                  onClick={handleSearch}
-                >
-                  <div className="text-gray-500">
-                    <FontAwesomeIcon icon={faSearch} />
-                  </div>
-                </div>
-              </div>
             </li>
           </ul>
         </div>
