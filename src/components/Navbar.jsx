@@ -149,7 +149,7 @@ export const Navbar = (props) => {
       </div>
       {isMobileMenuOpen && (
         <div className="px-4 py-4 md:hidden">
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-4 content-center text-center">
             <li>
               <Link
                 to="/trending-tv"
