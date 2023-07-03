@@ -82,7 +82,7 @@ function App() {
               currentPage={currentPage}
               data={data}
               movieData={movieData}
-              type={null}
+              type={movieData ? "tv" : "movie"}
             />
           }
         />

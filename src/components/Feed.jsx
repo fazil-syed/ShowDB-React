@@ -17,7 +17,7 @@ export const Feed = (props) => {
               item={item && item}
               imageSize="w-full"
               isMovie={false}
-              type={type ? type : "movie"}
+              type={type}
             />
           ))}
       </div>
